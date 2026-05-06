@@ -4,6 +4,7 @@ import com.apcode.dto.*;
 import com.apcode.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,6 +21,24 @@ import java.util.List;
 @RequestMapping("/courses")
 @RequiredArgsConstructor
 class CourseController {
+    // CORRECT — Spring resolves the impl automatically
+    @Autowired
+    private VideoService videoService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private NewsletterService newsletterService;
+
+    @Autowired
+    private ReviewService reviewService;
+
+    @Autowired
+    private LeaderboardService leaderboardService;
+
+    @Autowired
+    private StatsService statsService;
 
     private final CourseService courseService;
 
@@ -84,8 +103,9 @@ class CourseController {
 @RequestMapping("/videos")
 @RequiredArgsConstructor
 class VideoController {
+    @Autowired
 
-    private final VideoServiceImpl videoService;
+    private VideoService videoService;
 
     /** GET /api/videos/free — public free videos (gallery) */
     @GetMapping("/free")
@@ -117,8 +137,8 @@ class VideoController {
 @RequestMapping("/users")
 @RequiredArgsConstructor
 class UserController {
-
-    private final UserServiceImpl userService;
+    @Autowired
+    private UserService userService;
 
     /** GET /api/users/me */
     @GetMapping("/me")
@@ -136,7 +156,8 @@ class UserController {
 @RequiredArgsConstructor
 class NewsletterController {
 
-    private final NewsletterServiceImpl newsletterService;
+    @Autowired
+    private NewsletterService newsletterService;
 
     /** POST /api/newsletter/subscribe */
     @PostMapping("/subscribe")
@@ -161,8 +182,8 @@ class NewsletterController {
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
 class ReviewController {
-
-    private final ReviewServiceImpl reviewService;
+    @Autowired
+    private ReviewService reviewService;
 
     /** GET /api/reviews/public — approved reviews for homepage */
     @GetMapping("/public")
@@ -197,7 +218,8 @@ class ReviewController {
 @RequiredArgsConstructor
 class LeaderboardController {
 
-    private final LeaderboardServiceImpl leaderboardService;
+    @Autowired
+    private LeaderboardService leaderboardService;
 
     /** GET /api/leaderboard?limit=10 */
     @GetMapping
@@ -216,7 +238,8 @@ class LeaderboardController {
 @RequiredArgsConstructor
 class StatsController {
 
-    private final StatsServiceImpl statsService;
+    @Autowired
+    private StatsService statsService;
 
     /** GET /api/stats */
     @GetMapping

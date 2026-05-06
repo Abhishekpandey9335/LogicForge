@@ -1,3 +1,7 @@
 package com.apcode.service;
 
-public interface StatsService {}
+import com.apcode.dto.PlatformStats;
+
+public interface StatsService {
+    PlatformStats getStats();
+}

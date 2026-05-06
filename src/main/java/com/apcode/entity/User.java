@@ -16,6 +16,9 @@ import java.util.List;
 })
 @EntityListeners(AuditingEntityListener.class)
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+
+
+
 public class User {
 
     @Id

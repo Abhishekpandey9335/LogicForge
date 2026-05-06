@@ -10,13 +10,6 @@ public class ApcodeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ApcodeApplication.class, args);
-        System.out.println("""
-                
-                ╔══════════════════════════════════════════╗
-                ║     AP_Code Backend Started! ✅           ║
-                ║     API Base: http://localhost:8080/api   ║
-                ║     Docs:     /api/swagger-ui.html        ║
-                ╚══════════════════════════════════════════╝
-                """);
+        System.out.println();
     }
 }
